@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoBeeX - F&O & Global Stock Trading Platform | Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0b0e11',
+                        cardbg: '#141a23',
+                        cardborder: '#232d3f',
+                        accent: '#f0b90b',
+                        accenthover: '#d9a70a',
+                        muted: '#848e9c',
+                        greenprice: '#0ecb81',
+                        redprice: '#f6465d'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0e11;
+            color: #eaecef;
+            overflow-x: hidden;
+        }
+        .crypto-card {
+            background-color: #12161c;
+            border: 1px solid #232d3f;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .crypto-card:hover {
+            border-color: rgba(240, 185, 11, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(240, 185, 11, 0.1);
+        }
+        .btn-amber {
+            background: linear-gradient(135deg, #f0b90b 0%, #f5a623 100%);
+            color: #0b0e11;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+        .btn-amber:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(240, 185, 11, 0.3);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0e11;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232d3f;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f0b90b;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- TOP TICKER BAR -->
+    <div class="bg-[#0b0e11] border-b border-[#232d3f]/60 text-xs text-muted py-2 px-4 overflow-x-auto whitespace-nowrap">
+        <div class="max-w-7xl mx-auto flex items-center justify-between space-x-6">
+            <div class="flex items-center space-x-6">
+                <span class="flex items-center space-x-1.5 text-emerald-400 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>HEALTHY</span>
+                    <span class="text-muted">2%</span>
+                </span>
+                <span>BNB/USDT <strong class="text-white">730.08</strong> <span class="text-emerald-400">+1.46%</span></span>
+                <span>XRP/USDT <strong class="text-white">1.3398</strong> <span class="text-red-400">-0.02%</span></span>
+                <span>ADA/USDT <strong class="text-white">0.2300</strong> <span class="text-red-400">-0.03%</span></span>
+                <span>DOGE/USDT <strong class="text-white">0.08197</strong> <span class="text-emerald-400">+0.03%</span></span>
+                <span>DOT/USDT <strong class="text-white">1.1850</strong> <span class="text-emerald-400">+0.06%</span></span>
+                <span>AVAX/USDT <strong class="text-white">10.061</strong> <span class="text-emerald-400">+0.04%</span></span>
+            </div>
+            <div class="hidden lg:flex items-center space-x-4 text-muted">
+                <span>03:28:51 UTC</span>
+                <span><i class="fa-solid fa-wifi text-emerald-400 mr-1"></i> 16ms</span>
+                <span class="text-accent"><i class="fa-solid fa-bolt mr-1"></i> Bonus</span>
+                <button onclick="openComingSoon('Support Center')" class="hover:text-white transition"><i class="fa-solid fa-headset mr-1"></i> Support</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="border-b border-[#232d3f] bg-[#0b0e11]/90 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-8">
+                <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-black font-extrabold text-xl shadow-lg shadow-amber-500/20">
+                        ⬡
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">Crypto<span class="text-accent">BeeX</span></span>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-muted">
+                    <button onclick="openComingSoon('Buy Crypto Portal')" class="hover:text-white transition">Buy Crypto</button>
+                    <button onclick="openComingSoon('Markets Overview')" class="hover:text-white transition">Markets</button>
+                    <button onclick="openComingSoon('Spot & Derivative Trading Desk')" class="hover:text-white transition">Trade <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i></button>
+                    <button onclick="openComingSoon('Earn & Finance Hub')" class="hover:text-white transition">Finance <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i></button>
+                    <button onclick="openComingSoon('Rewards Hub')" class="hover:text-white transition">Rewards Hub</button>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button onclick="openComingSoon('Theme Toggle')" class="p-2 rounded-xl bg-[#12161c] border border-[#232d3f] text-muted hover:text-white transition">
+                    <i class="fa-solid fa-sun text-sm"></i>
+                </button>
+                <button onclick="openComingSoon('Log In Portal')" class="text-sm font-semibold text-white px-4 py-2 hover:text-accent transition">Log In</button>
+                <button onclick="openComingSoon('Sign Up & Waitlist')" class="btn-amber px-5 py-2 rounded-xl text-sm shadow-md">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <main class="flex-grow">
+
+        <!-- COMING SOON BANNER ALERT -->
+        <div class="bg-gradient-to-r from-amber-500/20 via-orange-500/10 to-transparent border-b border-amber-500/30 py-2.5 px-4 text-center">
+            <div class="max-w-7xl mx-auto flex items-center justify-center space-x-2 text-xs sm:text-sm font-medium text-amber-300">
+                <i class="fa-solid fa-bullhorn animate-bounce"></i>
+                <span>CryptoBeeX F&O and Stock CFD Platform is currently in Private Beta. Register below for instant early access!</span>
+                <button onclick="openComingSoon('VIP Early Access')" class="underline font-bold hover:text-white ml-2">Join Waitlist &rarr;</button>
+            </div>
+        </div>
+
+        <!-- SECTION 1: TOP TOKENS & TRADING HUB -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+            
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold mb-6">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Live Spot & Derivative Trading Hub</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-4">
+                Start Strong with <span class="text-accent">Top Tokens</span>
+            </h1>
+            <p class="text-muted text-base sm:text-lg max-w-2xl mx-auto mb-10">
+                Trade 200+ crypto pairs & global stock CFDs with ultra-low latency on CryptoBeeX.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
+                <div class="crypto-card p-4 text-center">
+                    <p class="text-xs text-muted mb-1">24H VOLUME</p>
+                    <p class="text-xl sm:text-2xl font-bold text-white">$4.85 Billion</p>
+                </div>
+                <div class="crypto-card p-4 text-center">
+                    <p class="text-xs text-muted mb-1">LATENCY</p>
+                    <p class="text-xl sm:text-2xl font-bold text-white">&lt; 10ms</p>
+                </div>
+                <div class="crypto-card p-4 text-center">
+                    <p class="text-xs text-muted mb-1">ACTIVE TRADERS</p>
+                    <p class="text-xl sm:text-2xl font-bold text-white">1.2M+</p>
+                </div>
+                <div class="crypto-card p-4 text-center">
+                    <p class="text-xs text-muted mb-1">RESERVE PROOF</p>
+                    <p class="text-xl sm:text-2xl font-bold text-emerald-400">100% Verified</p>
+                </div>
+            </div>
+
+            <!-- Interactive Trading Preview Box matching screenshot 1 -->
+            <div class="crypto-card p-6 lg:p-8 max-w-6xl mx-auto text-left grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold text-lg">₿</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">BTC/USDT</h3>
+                                <p class="text-xs text-muted">Perpetual Futures & Spot</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-2xl font-extrabold text-white">82,171.00</span>
+                            <span class="text-emerald-400 text-sm font-semibold ml-2">+1.09%</span>
+                        </div>
+                    </div>
+                    <!-- Simulated SVG Live Chart -->
+                    <div class="h-48 w-full bg-[#0b0e11] rounded-xl p-3 border border-[#232d3f] flex items-end">
+                        <svg viewBox="0 0 500 150" class="w-full h-full stroke-amber-400 fill-none" style="stroke-width: 2.5;">
+                            <path d="M 0 120 Q 50 100, 100 80 T 200 60 T 300 110 T 400 40 T 500 70" />
+                            <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#f0b90b" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#f0b90b" stop-opacity="0"/>
+                            </linearGradient>
+                            <path d="M 0 120 Q 50 100, 100 80 T 200 60 T 300 110 T 400 40 T 500 70 L 500 150 L 0 150 Z" fill="url(#grad)" stroke="none"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="space-y-3">
+                    <div onclick="openComingSoon('BTC/USDT Trading')" class="crypto-card p-3.5 flex items-center justify-between cursor-pointer hover:bg-[#1a212c]">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-amber-400 font-bold">₿</span>
+                            <span class="text-sm font-semibold text-white">BTC/USDT</span>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-white">82,171.00</p>
+                            <span class="text-xs text-emerald-400">+1.09%</span>
+                        </div>
+                    </div>
+                    <div onclick="openComingSoon('ETH/USDT Trading')" class="crypto-card p-3.5 flex items-center justify-between cursor-pointer hover:bg-[#1a212c]">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-blue-400 font-bold">Ξ</span>
+                            <span class="text-sm font-semibold text-white">ETH/USDT</span>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-white">2,443.41</p>
+                            <span class="text-xs text-emerald-400">+3.01%</span>
+                        </div>
+                    </div>
+                    <div onclick="openComingSoon('BNB/USDT Trading')" class="crypto-card p-3.5 flex items-center justify-between cursor-pointer hover:bg-[#1a212c]">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-amber-500 font-bold">BNB</span>
+                            <span class="text-sm font-semibold text-white">BNB/USDT</span>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-white">730.08</p>
+                            <span class="text-xs text-emerald-400">+1.46%</span>
+                        </div>
+                    </div>
+                    <div onclick="openComingSoon('TRX/USDT Trading')" class="crypto-card p-3.5 flex items-center justify-between cursor-pointer hover:bg-[#1a212c]">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-red-500 font-bold">TRX</span>
+                            <span class="text-sm font-semibold text-white">TRX/USDT</span>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-white">0.3352</p>
+                            <span class="text-xs text-emerald-400">+1.48%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 2: CRYPTO F&O TRADING (Matching Screenshot 2) -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center border-t border-[#232d3f]/40">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold mb-4">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>CRYPTOBEEK CFD HUB</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-3">
+                Crypto F&O <span class="text-accent">Trading</span>
+            </h2>
+            <p class="text-muted text-sm sm:text-base mb-2">Simplified In 3 Steps</p>
+            <p class="text-muted text-xs sm:text-sm max-w-xl mx-auto mb-12">
+                A Smooth Onboarding Experience Designed To Get You Started Instantly, Paired With Powerful Tools To Manage Your Portfolio With Confidence.
+            </p>
+
+            <!-- 3 Steps Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
+                <div class="crypto-card p-6 text-left relative">
+                    <div class="w-8 h-8 rounded-full bg-amber-500 text-black font-bold flex items-center justify-center text-sm mb-4">1</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Sign Up</h3>
+                    <p class="text-xs text-muted leading-relaxed">Get started in seconds using your email or phone number. Set up your account and begin your journey effortlessly.</p>
+                </div>
+                <div class="crypto-card p-6 text-left relative">
+                    <div class="w-8 h-8 rounded-full bg-amber-500 text-black font-bold flex items-center justify-center text-sm mb-4">2</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Complete KYC</h3>
+                    <p class="text-xs text-muted leading-relaxed">Verify your identity with a quick and secure process. Finish your KYC in just a few minutes and unlock full access.</p>
+                </div>
+                <div class="crypto-card p-6 text-left relative">
+                    <div class="w-8 h-8 rounded-full bg-amber-500 text-black font-bold flex items-center justify-center text-sm mb-4">3</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Add Funds</h3>
+                    <p class="text-xs text-muted leading-relaxed">Deposit funds instantly with seamless INR support. Enjoy fast, secure transactions to start trading without delays.</p>
+                </div>
+                <div class="crypto-card p-6 text-left relative border-amber-500/40 bg-gradient-to-b from-[#12161c] to-[#1a212c]">
+                    <div class="w-8 h-8 rounded-full bg-amber-500 text-black font-bold flex items-center justify-center text-sm mb-4"><i class="fa-solid fa-bolt"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Trade Now</h3>
+                    <p class="text-xs text-muted leading-relaxed mb-4">Access powerful tools & trade with confidence. Seize market opportunities anytime, anywhere.</p>
+                    <button onclick="openComingSoon('Trade Now Platform')" class="w-full btn-amber py-2 rounded-xl text-xs">Trade Now</button>
+                </div>
+            </div>
+
+            <!-- Fee & Leverage Strip -->
+            <div class="crypto-card p-6 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
+                <div class="text-center sm:text-left sm:pl-6">
+                    <p class="text-2xl sm:text-3xl font-extrabold text-white">0.02%</p>
+                    <p class="text-xs text-muted uppercase tracking-wider">MAKER FEE</p>
+                </div>
+                <div class="text-center border-y sm:border-y-0 sm:border-x border-[#232d3f] py-4 sm:py-0">
+                    <p class="text-3xl sm:text-4xl font-extrabold text-accent">Upto 150x</p>
+                    <p class="text-xs text-muted uppercase tracking-wider">LEVERAGE</p>
+                </div>
+                <div class="text-center sm:text-right sm:pr-6">
+                    <p class="text-2xl sm:text-3xl font-extrabold text-white">0.05%</p>
+                    <p class="text-xs text-muted uppercase tracking-wider">TAKER FEE</p>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold text-white">Trade Global Equities via <span class="text-accent">Derivative Markets</span></h3>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PASSIVE INCOME & EARNING (Matching Screenshots 3 & 4) -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center border-t border-[#232d3f]/40">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold mb-4">
+                <i class="fa-solid fa-coins"></i>
+                <span>PASSIVE INCOME</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-3">
+                Make crypto work <span class="text-accent">for you</span>
+            </h2>
+            <p class="text-muted text-sm sm:text-base max-w-xl mx-auto mb-10">
+                Earn industry-leading yields on your idle assets — no expertise required.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-12">
+                <div class="crypto-card p-5">
+                    <p class="text-xl sm:text-2xl font-extrabold text-white mb-1">$2.4B+</p>
+                    <p class="text-xs text-muted uppercase">TOTAL VALUE LOCKED</p>
+                </div>
+                <div class="crypto-card p-5">
+                    <p class="text-xl sm:text-2xl font-extrabold text-white mb-1">180K+</p>
+                    <p class="text-xs text-muted uppercase">ACTIVE EARNERS</p>
+                </div>
+                <div class="crypto-card p-5">
+                    <p class="text-xl sm:text-2xl font-extrabold text-white mb-1">$1.2M+</p>
+                    <p class="text-xs text-muted uppercase">AVG. DAILY YIELD</p>
+                </div>
+                <div class="crypto-card p-5">
+                    <p class="text-xl sm:text-2xl font-extrabold text-emerald-400 mb-1">666%</p>
+                    <p class="text-xs text-muted uppercase">MAX APR</p>
+                </div>
+            </div>
+
+            <!-- Earning Box matching screenshot 3 -->
+            <div class="crypto-card p-6 lg:p-8 max-w-5xl mx-auto text-left grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4">
+                    <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold">
+                        <i class="fa-solid fa-fire"></i>
+                        <span>HOT</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">USDT Easy Earn APR</h3>
+                    <p class="text-xs text-muted">Flexible • No lock-up • Withdraw anytime</p>
+                    
+                    <div class="py-2">
+                        <span class="text-4xl sm:text-5xl font-extrabold text-emerald-400">666.00%</span>
+                        <span class="text-sm font-bold text-muted ml-2">APR</span>
+                    </div>
+                    
+                    <div class="w-full bg-[#0b0e11] h-2 rounded-full overflow-hidden border border-[#232d3f]">
+                        <div class="bg-gradient-to-r from-emerald-500 to-amber-400 w-[92%] h-full"></div>
+                    </div>
+                    <p class="text-xs text-muted">Market utilization: 92%</p>
+
+                    <button onclick="openComingSoon('Start Earning USDT')" class="btn-amber px-6 py-3 rounded-xl text-sm flex items-center space-x-2">
+                        <span>Start Earning</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="crypto-card p-4 flex items-center justify-between cursor-pointer hover:bg-[#1a212c]" onclick="openComingSoon('BTC Savings')">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">₿</div>
+                            <div>
+                                <p class="text-sm font-bold text-white">BTC Savings APR</p>
+                                <p class="text-xs text-muted">Secure • Low risk</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-emerald-400">2.30%</p>
+                            <i class="fa-solid fa-arrow-right text-xs text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="crypto-card p-4 flex items-center justify-between cursor-pointer hover:bg-[#1a212c]" onclick="openComingSoon('ETH Savings')">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">Ξ</div>
+                            <div>
+                                <p class="text-sm font-bold text-white">ETH Savings APR</p>
+                                <p class="text-xs text-muted">Stake & earn</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-emerald-400">0.80%</p>
+                            <i class="fa-solid fa-arrow-right text-xs text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="crypto-card p-3 text-center">
+                        <p class="text-xs text-muted mb-1">More Assets Available</p>
+                        <button onclick="openComingSoon('All Earning Products')" class="text-accent text-xs font-semibold hover:underline">View all earning products &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <button onclick="openComingSoon('Start Earning Now')" class="btn-amber px-8 py-3.5 rounded-xl text-sm font-bold shadow-lg">
+                    Start Earning Now &rarr;
+                </button>
+                <p class="text-[11px] text-muted mt-3">No minimum. Withdraw anytime. No hidden fees.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: INSTITUTIONAL GRADE SECURITY (Matching Screenshot 5) -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center border-t border-[#232d3f]/40">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold mb-4">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>INSTITUTIONAL GRADE SECURITY</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-3">
+                Why Trade on <span class="text-accent">CryptoBeeX</span>?
+            </h2>
+            <p class="text-muted text-sm sm:text-base max-w-xl mx-auto mb-12">
+                Built for professional traders and retail investors alike with unmatched liquidity & security.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-left max-w-6xl mx-auto">
+                <div class="crypto-card p-6">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4 text-lg">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">100% Reserve Proof</h3>
+                    <p class="text-xs text-muted leading-relaxed">All user assets are backed 1:1 in cold storage multi-signature vaults with real-time Merkle tree audits.</p>
+                </div>
+
+                <div class="crypto-card p-6">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4 text-lg">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Sub-10ms Matching</h3>
+                    <p class="text-xs text-muted leading-relaxed">High-frequency order matching engine processing 100,000+ transactions per second with zero slippage.</p>
+                </div>
+
+                <div class="crypto-card p-6">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4 text-lg">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Crypto + Stock CFDs</h3>
+                    <p class="text-xs text-muted leading-relaxed">Trade Tesla, Nvidia, Apple, and 200+ crypto pairs directly using your USDT collateral up to 20x leverage.</p>
+                </div>
+
+                <div class="crypto-card p-6">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4 text-lg">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">24/7 VIP Assistance</h3>
+                    <p class="text-xs text-muted leading-relaxed">Dedicated multilingual support team ready 24 hours a day to resolve trading or deposit queries in seconds.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-[#232d3f] bg-[#0b0e11] py-8 text-xs text-muted">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between">
+            <div class="flex items-center space-x-2 mb-4 sm:mb-0">
+                <div class="w-7 h-7 rounded-lg bg-amber-500 flex items-center justify-center text-black font-extrabold text-sm">⬡</div>
+                <span class="text-white font-bold">CryptoBeeX F&O Platform</span>
+            </div>
+            <p>&copy; 2026 CryptoBeeX. All rights reserved. Global Derivative Markets & Stock CFDs.</p>
+            <div class="flex space-x-6 mt-4 sm:mt-0">
+                <a href="#" class="hover:text-white transition">Privacy</a>
+                <a href="#" class="hover:text-white transition">Terms</a>
+                <a href="#" class="hover:text-white transition">API Docs</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE COMING SOON / VIP WAITLIST MODAL -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="crypto-card max-w-md w-full p-6 sm:p-8 relative bg-[#12161c] border border-amber-500/30 shadow-2xl animate-scale-up">
+            
+            <button onclick="closeComingSoon()" class="absolute top-4 right-4 text-muted hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto mb-3 text-xl font-bold">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <h3 id="modal-title" class="text-xl font-bold text-white">CryptoBeeX Private Beta</h3>
+                <p id="modal-subtitle" class="text-xs text-muted mt-1">This feature is launching soon. Secure your spot on the VIP waitlist to get $100 bonus credit upon launch.</p>
+            </div>
+
+            <form id="waitlist-form" onsubmit="submitWaitlist(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-muted mb-1.5">Your Email Address</label>
+                    <input type="email" id="waitlist-email" required placeholder="name@example.com" 
+                        class="w-full px-4 py-3 bg-[#0b0e11] border border-[#232d3f] rounded-xl text-white text-sm focus:outline-none focus:border-amber-400">
+                </div>
+                <button type="submit" class="w-full btn-amber py-3.5 rounded-xl text-sm font-bold shadow-md cursor-pointer">
+                    Join VIP Waitlist
+                </button>
+            </form>
+
+            <div id="modal-success" class="hidden text-center py-4">
+                <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-xl">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h4 class="text-white font-bold text-base">You're on the Priority List!</h4>
+                <p class="text-xs text-muted mt-1">We've reserved your early access key. Check your inbox when the server goes live.</p>
+                <button onclick="closeComingSoon()" class="mt-4 px-6 py-2 bg-[#232d3f] text-white text-xs rounded-xl hover:bg-[#2d3a4f]">Close Window</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR MODAL & INTERACTIONS -->
+    <script>
+        function openComingSoon(featureName) {
+            const modal = document.getElementById('modal-backdrop');
+            const title = document.getElementById('modal-title');
+            const subtitle = document.getElementById('modal-subtitle');
+            
+            if (featureName) {
+                title.innerText = featureName + " - Coming Soon";
+            } else {
+                title.innerText = "CryptoBeeX F&O Platform";
+            }
+            
+            document.getElementById('waitlist-form').classList.remove('hidden');
+            document.getElementById('modal-success').classList.add('hidden');
+            document.getElementById('waitlist-email').value = '';
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeComingSoon() {
+            document.getElementById('modal-backdrop').classList.add('hidden');
+        }
+
+        function submitWaitlist(event) {
+            event.preventDefault();
+            const email = document.getElementById('waitlist-email').value;
+            if(email) {
+                document.getElementById('waitlist-form').classList.add('hidden');
+                document.getElementById('modal-success').classList.remove('hidden');
+            }
+        }
+
+        // Close modal on background click
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal-backdrop');
+            if (event.target === modal) {
+                closeComingSoon();
+            }
+        }
+    </script>
+</body>
+</html>
